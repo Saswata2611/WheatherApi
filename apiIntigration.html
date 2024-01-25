@@ -10,9 +10,11 @@
     form{
         width:400px;
         height: 250px;
-        border: 1.5px solid black;
+        border: 1.5px solid rgb(255, 255, 255);
         margin-left: 550px;
         margin-top: 220px;
+        background-color: rgba(240, 248, 255, 0.456);
+        border-radius: 15px;
     }
     #location{
         margin-left: 70px;
@@ -49,16 +51,16 @@ async function search() {
             try {
                 const response = await fetch(apiUrl);
                 const apiData = await response.json();
-
                 const apiCurrent = apiData.current;
                 const apiCondition = apiCurrent.temp_c;
                 const apiLocation = apiData.location;
                 const locationName = apiLocation.name;
-
                 document.getElementById('result').innerHTML = `Temperature: ${apiCondition}°C`;
                 document.getElementById('location').innerHTML = `Location: ${locationName}`;
+            
             } catch (error) {
-                console.error('Error fetching data:', error);
+                document.getElementById('result').innerHTML = 'No Area Temperature is found PLease FUCK OFF!!';
+                document.getElementById('result').style.marginLeft = '30px';
             }
         }
     </script>
